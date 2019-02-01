@@ -1,7 +1,16 @@
 class StudentsController < ApplicationController
-  
+
   def index
     @students = Student.all
+  end
+
+  def new
+    render :'/students/new'
+  end
+
+  def create
+    @student = Student.create(first_name: params["first name"], last_name: params["last name"])
+    redirect_to student_path(@student)
   end
 
   def show
